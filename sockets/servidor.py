@@ -3,5 +3,9 @@ s = socket.socket()
 s.bind(("0.0.0.0",5001))
 s.listen()
 con, dir = s.accept()
-dato = con.recv(1024)
-con.send(b"eco: " + dato)
+while True:
+    dato = con.recv(1024)
+    print(dato.decode())
+    if not dato:
+        break
+    con.send(b"eco: " + dato)

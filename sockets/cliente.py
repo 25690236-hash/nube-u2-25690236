@@ -1,5 +1,9 @@
 import socket 
 c = socket.socket()
 c.connect(("localhost",5001))
-c.send(b"hola")
-print(c.recv(1024))
+while True:
+    dato = input("Mensaje: ")
+    c.send(dato.encode())
+    if dato == "salir":
+        break
+    print(c.recv(1024).decode())
